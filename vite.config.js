@@ -7,5 +7,5 @@ export default defineConfig({
     jsxRuntime: 'classic'
   }
   )],
-  base:'/',
+  base:'/Zefir/',
 })
