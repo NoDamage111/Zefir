@@ -3,9 +3,9 @@
 :root {
     --font: "Karla", sans-serif;
 
-    --accent: #12C0DD;
-    --acent-rgb: 18, 192, 221;
-    --light:#FFFFFF;
+    --accent: #f29f49;
+    --acent-rgb: 242, 159, 73;
+    --light: white;
     --border-radius: 1vw;
     --width-line: 2px;
     --tr: 0.3s;
@@ -23,7 +23,7 @@ body {
 
 body, html{
     height: 100vh;
-    background-color: brown;
+    background-color: #c9c7c5;
 }
 
 input, button{
@@ -104,6 +104,7 @@ input, button{
     border-radius: var(--border-radius);
     padding: 5px 5px;
     box-sizing: border-box;
+    color: #12C0DD;
 }
 
 .weather-form_input{
@@ -145,6 +146,7 @@ input::-webkit-inner-spin-button {
 .weather-form_btn:hover{
     background-color: var(--accent);
 }
+
 
 .weather-form{
     height: 100%;
