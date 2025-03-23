@@ -1,160 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
-
-:root {
-    --font: "Karla", sans-serif;
-
-    --accent: #f29f49;
-    --acent-rgb: 242, 159, 73;
-    --light: white;
-    --border-radius: 1vw;
-    --width-line: 2px;
-    --tr: 0.3s;
+/* Сброс отступов и полей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-    font-family: var(--font);
-    height: 100%;
+/* Основной контейнер */
+.container {
+  display: flex;
+  min-height: 100vh; /* Минимальная высота на весь экран */
+  font-family: Arial, sans-serif; /* Шрифт */
 }
 
-*{
-    margin: 0;
-    padding: 0;
+/* Общие стили для столбцов */
+.column {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  overflow: auto; /* Добавляем прокрутку, если содержимое выходит за границы */
+  background-color: #f9f9f9; /* Светлый фон */
 }
 
-body, html{
-    height: 100vh;
-    background-color: #c9c7c5;
+/* Первый столбец (1 часть) */
+.column-1 {
+  flex: 1; /* 1 часть */
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Расстояние между элементами */
 }
 
-input, button{
-    font-family: var(--font);
+/* Второй столбец (1 часть) */
+.column-2 {
+  flex: 1; /* 1 часть */
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Расстояние между кнопками */
 }
 
-#app{
-    height: 100%;
+/* Третий столбец (3 части) */
+.column-3 {
+  flex: 3; /* 3 части */
+  background-color: #ffffff; /* Белый фон */
 }
 
-.weather{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+/* Стили для select */
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #007bff; /* Синяя рамка */
+  border-radius: 8px; /* Скруглённые углы */
+  background-color: #ffffff; /* Белый фон */
+  color: #333; /* Тёмный текст */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Плавный переход */
+  appearance: none; /* Убираем стандартный стиль */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
 }
 
-.weather-bg{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+select:hover {
+  border-color: #0056b3; /* Тёмно-синяя рамка при наведении */
 }
 
-.weather-bg > div{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+select:focus {
+  outline: none;
+  border-color: #0056b3; /* Тёмно-синяя рамка при фокусе */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Тень при фокусе */
 }
 
-.weather-bg_img{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    opacity: 0;
-    transition: var(--tr) ease-in-out;
+/* Стили для input */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #007bff; /* Синяя рамка */
+  border-radius: 8px; /* Скруглённые углы */
+  background-color: #ffffff; /* Белый фон */
+  color: #333; /* Тёмный текст */
+  transition: all 0.3s ease; /* Плавный переход */
 }
 
-.weather .weather-bg_img .bg{
-    opacity: 1;
+input[type="text"]:hover,
+input[type="number"]:hover {
+  border-color: #0056b3; /* Тёмно-синяя рамка при наведении */
 }
 
-.weather.sunny .weather-bg_img:not(.sunny) {
-    opacity: 0;
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #0056b3; /* Тёмно-синяя рамка при фокусе */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Тень при фокусе */
 }
 
-.weather.sunny .weather-bg_img.sunny {
-    opacity: 1;
+/* Стили для кнопок */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 8px; /* Скруглённые углы */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Плавный переход */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
 }
 
-.container{
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    display: grid;
-    grid-template-columns: 20% 20% auto;
-    gap: 0.1vw;
-    box-sizing: border-box;
+button:hover {
+  background: linear-gradient(135deg, #0056b3, #003d80); /* Градиент при наведении */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Тень при наведении */
+  transform: translateY(-2px); /* Лёгкий подъём */
 }
 
-.card{
-    background-color: var(--light);
-    border-radius: var(--border-radius);
-    padding: 5px 5px;
-    box-sizing: border-box;
-    color: #12C0DD;
-}
-
-.weather-form_input{
-    width: 90%;
-    max-width: 100%;
-    font-size: 20px;
-    border: var(--width-line) solid rgba(var(--acent-rgb), 0.3) ;
-    border-radius: var(--border-radius);
-    margin: 10px 5%;
-    padding: 10px;
-    box-sizing:border-box;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-.weather-form_input:focus{
-    outline: none;
-    border-color: var(--accent);
-}
-
-.weather-form_btn{
-    flex-basis: 100px;
-    width: 100%;
-    font-size: 20px;
-    background-color: rgba(var(--acent-rgb), 0.3) ;
-    border: none;
-    border-radius: var(--border-radius);
-    padding: 10px 15px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: var(--tr)
-}
-
-.weather-form_btn:hover{
-    background-color: var(--accent);
-}
-
-
-.weather-form{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: top;
-    position: relative;
-    overflow: hidden;
+button:active {
+  transform: translateY(0); /* Сброс подъёма при нажатии */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень при нажатии */
 }
